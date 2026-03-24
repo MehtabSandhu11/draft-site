@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lymph Sculpt by Ginny | Calgary</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F2;
+    --nude: #E8D9C8;
+    --warm-tan: #C9A98A;
+    --brown: #7A5C42;
+    --deep-brown: #3E2B1E;
+    --white: #FFFFFF;
+    --text: #3E2B1E;
+    --muted: #9A7D6A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 4rem;
+    background: rgba(250,247,242,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,169,138,0.2);
+    transition: padding 0.3s;
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--deep-brown);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--warm-tan); font-style: italic; }
+
+  .nav-links {
+    display: flex;
+    gap: 2.4rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brown);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--deep-brown); }
+
+  .nav-cta {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--brown);
+    border: none;
+    padding: 0.65rem 1.6rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+  .nav-cta:hover { background: var(--deep-brown); }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 4rem 6rem 6rem;
+  }
+
+  .hero-tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--warm-tan);
+    margin-bottom: 1.6rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--deep-brown);
+    margin-bottom: 1.8rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--warm-tan);
+  }
+
+  .hero-sub {
+    font-size: 0.9rem;
+    line-height: 1.9;
+    color: var(--muted);
+    max-width: 420px;
+    margin-bottom: 2.8rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+
+  .btn-primary {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--brown);
+    border: none;
+    padding: 1rem 2.2rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--deep-brown); transform: translateY(-1px); }
+
+  .btn-ghost {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brown);
+    background: transparent;
+    border: 1px solid var(--warm-tan);
+    padding: 1rem 2.2rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+  .btn-ghost:hover { background: var(--nude); }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+    background: var(--nude);
+  }
+
+  .hero-img-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, #E8D9C8 0%, #D4BEA6 40%, #C9A98A 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    opacity: 0;
+    animation: fadeIn 1.2s 0.5s forwards;
+  }
+
+  .hero-decorative {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.4);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    animation: pulse 4s ease-in-out infinite;
+  }
+  .hero-decorative:nth-child(2) { width: 200px; height: 200px; animation-delay: 0.5s; }
+  .hero-decorative:nth-child(3) { width: 420px; height: 420px; animation-delay: 1s; }
+
+  .hero-location {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    background: rgba(122,92,66,0.6);
+    padding: 0.5rem 1rem;
+    backdrop-filter: blur(8px);
+  }
+
+  .hero-brand-art {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    color: rgba(255,255,255,0.15);
+    font-style: italic;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    position: absolute;
+    bottom: 3rem;
+    right: -1rem;
+    line-height: 1;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 6rem;
+    background: var(--deep-brown);
+    overflow: hidden;
+  }
+
+  .divider-text {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--nude);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: rgba(201,169,138,0.3);
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    padding: 8rem 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .about-image-wrap {
+    position: relative;
+  }
+
+  .about-img-box {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(135deg, var(--nude) 0%, var(--warm-tan) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-img-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 70%, rgba(255,255,255,0.2) 0%, transparent 60%);
+  }
+
+  .about-accent-box {
+    position: absolute;
+    bottom: -2rem;
+    right: -2rem;
+    width: 60%;
+    aspect-ratio: 1;
+    border: 1px solid var(--warm-tan);
+    z-index: -1;
+  }
+
+  .about-badge {
+    position: absolute;
+    top: 2rem;
+    left: -2rem;
+    background: var(--brown);
+    color: var(--white);
+    padding: 1.4rem;
+    text-align: center;
+    min-width: 100px;
+  }
+
+  .about-badge .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 300;
+    display: block;
+    line-height: 1;
+  }
+
+  .about-badge .label {
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-top: 0.3rem;
+    display: block;
+  }
+
+  .about-content {}
+
+  .section-tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--warm-tan);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--deep-brown);
+    margin-bottom: 1.6rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--warm-tan); }
+
+  .about-text {
+    font-size: 0.88rem;
+    line-height: 2;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+  }
+
+  .about-pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .pillar {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .pillar-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--warm-tan);
+    margin-top: 0.4rem;
+    flex-shrink: 0;
+  }
+
+  .pillar-text {
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    color: var(--brown);
+    font-weight: 400;
+  }
+
+  /* ── SERVICES ── */
+  #services {
+    background: var(--deep-brown);
+    padding: 8rem 6rem;
+  }
+
+  .services-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .services-header .section-tag { color: var(--warm-tan); }
+
+  .services-header .section-title {
+    color: var(--cream);
+  }
+
+  .services-header .section-title em { color: var(--warm-tan); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: rgba(201,169,138,0.15);
+  }
+
+  .service-card {
+    background: var(--deep-brown);
+    padding: 3rem 2.5rem;
+    border: 1px solid rgba(201,169,138,0.12);
+    transition: background 0.4s, border-color 0.4s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--warm-tan);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+
+  .service-card:hover { background: rgba(201,169,138,0.08); border-color: rgba(201,169,138,0.3); }
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: rgba(201,169,138,0.15);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+
+  .service-sub {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm-tan);
+    margin-bottom: 1.2rem;
+  }
+
+  .service-desc {
+    font-size: 0.82rem;
+    line-height: 1.9;
+    color: rgba(232,217,200,0.6);
+  }
+
+  .service-price {
+    margin-top: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--warm-tan);
+    font-style: italic;
+  }
+
+  /* ── LUXURY SECTION ── */
+  #luxury {
+    padding: 8rem 6rem;
+    background: var(--cream);
+  }
+
+  .luxury-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
+    margin-bottom: 4rem;
+  }
+
+  .luxury-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--nude);
+  }
+
+  .luxury-card {
+    background: var(--cream);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: background 0.3s;
+    border-top: 2px solid transparent;
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .luxury-card:hover {
+    background: var(--white);
+    border-color: var(--warm-tan);
+  }
+
+  .luxury-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .luxury-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: var(--deep-brown);
+    margin-bottom: 0.6rem;
+  }
+
+  .luxury-desc {
+    font-size: 0.78rem;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+
+  /* ── BOOKING ── */
+  #book {
+    background: var(--nude);
+    padding: 8rem 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .book-left {}
+
+  .book-note {
+    font-size: 0.82rem;
+    line-height: 1.9;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .book-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .book-highlight {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.8rem;
+    color: var(--brown);
+  }
+
+  .book-highlight::before {
+    content: '—';
+    color: var(--warm-tan);
+  }
+
+  .book-form {
+    background: var(--white);
+    padding: 3rem;
+  }
+
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    color: var(--deep-brown);
+    margin-bottom: 0.4rem;
+  }
+
+  .form-sub {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    letter-spacing: 0.05em;
+  }
+
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin-bottom: 0.4rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    border: 1px solid var(--nude);
+    background: var(--cream);
+    padding: 0.75rem 1rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.3s;
+    appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--warm-tan);
+    background: var(--white);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-group textarea { resize: none; height: 90px; }
+
+  .btn-submit {
+    width: 100%;
+    padding: 1rem;
+    background: var(--brown);
+    color: var(--white);
+    border: none;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 0.5rem;
+  }
+  .btn-submit:hover { background: var(--deep-brown); }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--deep-brown);
+    padding: 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .contact-block {}
+
+  .contact-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--warm-tan);
+    margin-bottom: 0.8rem;
+  }
+
+  .contact-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--cream);
+    line-height: 1.6;
+  }
+
+  .contact-hours { font-size: 0.82rem; color: rgba(232,217,200,0.6); line-height: 2; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #1E1410;
+    padding: 1.5rem 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--nude);
+    font-style: italic;
+  }
+
+  .footer-text {
+    font-size: 0.68rem;
+    color: rgba(201,169,138,0.5);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: translate(-50%,-50%) scale(1); opacity: 0.5; }
+    50%       { transform: translate(-50%,-50%) scale(1.05); opacity: 0.8; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── HAMBURGER MENU ── */
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--brown);
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 101;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    nav { padding: 1.2rem 3rem; }
+    .nav-links { gap: 1.8rem; }
+    #home { padding-top: 70px; }
+    .hero-left { padding: 5rem 3rem 3rem; }
+    #about { padding: 6rem 3rem; gap: 4rem; }
+    #services { padding: 6rem 3rem; }
+    #luxury { padding: 6rem 3rem; }
+    #book { padding: 6rem 3rem; gap: 4rem; }
+    #contact { padding: 5rem 3rem; gap: 2rem; }
+    footer { padding: 1.5rem 3rem; }
+    .divider { padding: 1.5rem 3rem; }
+  }
+
+  @media (max-width: 900px) {
+    nav { 
+      padding: 1rem 2rem; 
+      position: relative;
+    }
+    .nav-toggle { display: block; }
+    .nav-links { 
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background: rgba(250,247,242,0.98);
+      backdrop-filter: blur(12px);
+      padding: 1.5rem 2rem;
+      gap: 1rem;
+      border-bottom: 1px solid rgba(201,169,138,0.2);
+    }
+    .nav-links.active { display: flex; }
+    .nav-links a { font-size: 0.85rem; }
+    .nav-cta { padding: 0.6rem 1.4rem; font-size: 0.68rem; width: 100%; text-align: center; }
+    
+    #home { grid-template-columns: 1fr; min-height: auto; padding-top: 70px; }
+    .hero-left { padding: 3rem 1.5rem 2rem; }
+    .hero-right { height: 40vw; min-height: 250px; }
+    .hero-title { font-size: clamp(2rem, 4vw, 3.5rem); }
+    
+    #about { grid-template-columns: 1fr; padding: 3rem 1.5rem; gap: 2rem; }
+    .about-pillars { grid-template-columns: 1fr; }
+    
+    #services { padding: 3rem 1.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card { padding: 2rem 1.5rem; }
+    
+    #luxury { padding: 3rem 1.5rem; }
+    .luxury-header { grid-template-columns: 1fr; gap: 1rem; }
+    .luxury-grid { grid-template-columns: 1fr 1fr; }
+    
+    #book { grid-template-columns: 1fr; padding: 3rem 1.5rem; gap: 2rem; }
+    .book-form { padding: 2rem; }
+    .form-row { grid-template-columns: 1fr; gap: 0.5rem; }
+    
+    #contact { grid-template-columns: 1fr; padding: 3rem 1.5rem; gap: 2rem; }
+    footer { flex-direction: column; gap: 0.5rem; padding: 1.5rem 1.5rem; text-align: center; }
+    .divider { padding: 1.5rem 1.5rem; }
+    .divider-text:nth-child(odd) { display: none; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.2rem; }
+    .nav-logo { font-size: 1.1rem; }
+    
+    .hero-left { padding: 2.5rem 1rem 1.5rem; }
+    .hero-tag { font-size: 0.62rem; }
+    .hero-sub { font-size: 0.82rem; }
+    .hero-actions { flex-direction: column; gap: 0.8rem; }
+    .btn-primary, .btn-ghost { width: 100%; padding: 0.9rem 1.5rem; font-size: 0.68rem; }
+    
+    .section-title { font-size: clamp(1.5rem, 3vw, 2.5rem); }
+    .service-name { font-size: 1.1rem; }
+    .form-title { font-size: 1.3rem; }
+    
+    .about-badge { padding: 1rem; min-width: 80px; }
+    .about-badge .num { font-size: 1.8rem; }
+  }
+
+  @media (max-width: 600px) {
+    body { font-size: 0.9rem; }
+    
+    nav { padding: 0.8rem 1rem; }
+    .nav-logo { font-size: 1rem; }
+    .nav-cta { padding: 0.5rem 1rem; font-size: 0.62rem; }
+    
+    #home { padding-top: 60px; }
+    .hero-left { padding: 2rem 1rem 1rem; }
+    .hero-tag { font-size: 0.58rem; margin-bottom: 1rem; }
+    .hero-title { font-size: clamp(1.8rem, 3.5vw, 2.8rem); margin-bottom: 1rem; }
+    .hero-sub { font-size: 0.78rem; max-width: 100%; margin-bottom: 1.5rem; }
+    .hero-actions { flex-direction: column; }
+    
+    .section-tag { font-size: 0.62rem; }
+    .section-title { font-size: clamp(1.3rem, 2.5vw, 2rem); margin-bottom: 1rem; }
+    
+    .about-badge { position: relative; margin-bottom: 1rem; top: 0; left: 0; }
+    .about-content { padding: 0; }
+    
+    #services { padding: 2rem 1rem; }
+    .services-header { margin-bottom: 2rem; }
+    .service-card { padding: 1.5rem 1rem; }
+    .service-num { font-size: 2rem; margin-bottom: 0.8rem; }
+    .service-name { font-size: 1rem; }
+    .service-desc { font-size: 0.75rem; line-height: 1.7; }
+    
+    #luxury { padding: 2rem 1rem; }
+    .luxury-card { padding: 1.5rem 1rem; }
+    .luxury-icon { font-size: 1.5rem; }
+    
+    #book { padding: 2rem 1rem; gap: 1.5rem; }
+    .book-form { padding: 1.5rem; }
+    .form-group input, .form-group select, .form-group textarea { padding: 0.65rem 0.8rem; font-size: 0.8rem; }
+    .form-group textarea { height: 70px; }
+    .btn-submit { padding: 0.85rem; font-size: 0.66rem; }
+    
+    #contact { padding: 2rem 1rem; gap: 1.5rem; }
+    .contact-label { font-size: 0.6rem; }
+    .contact-value { font-size: 0.95rem; }
+    
+    footer { padding: 1.2rem 1rem; gap: 0.3rem; }
+    .footer-logo { font-size: 0.9rem; }
+    .footer-text { font-size: 0.6rem; }
+    
+    .divider { padding: 1rem; }
+    .divider-text { font-size: 0.58rem; }
+  }
+
+  @media (max-width: 480px) {
+    nav { padding: 0.7rem 0.8rem; }
+    .nav-logo { font-size: 0.9rem; }
+    
+    .hero-left { padding: 1.5rem 0.8rem 1rem; }
+    .hero-title { font-size: clamp(1.5rem, 3vw, 2.4rem); line-height: 1.2; }
+    .hero-sub { font-size: 0.75rem; }
+    
+    .about-img-box { aspect-ratio: 2/3; }
+    .section-title { font-size: clamp(1.2rem, 2vw, 1.8rem); }
+    
+    #services { padding: 1.5rem 0.8rem; }
+    .services-header { margin-bottom: 1.5rem; }
+    
+    #luxury { padding: 1.5rem 0.8rem; }
+    .luxury-grid { grid-template-columns: 1fr; }
+    
+    #book { padding: 1.5rem 0.8rem; }
+    .book-form { padding: 1.2rem; }
+    
+    #contact { padding: 1.5rem 0.8rem; }
+    
+    footer { padding: 1rem 0.8rem; }
+    
+    .divider { padding: 0.8rem; flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">Lymph Sculpt <span>by Ginny</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#book">Book</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle">☰</button>
+  <a href="#book" class="nav-cta">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-left">
+    <p class="hero-tag">Calgary's Specialist in Body Wellness &amp; Sculpting</p>
+    <h1 class="hero-title">
+      Sculpt.<br>
+      Restore.<br>
+      <em>Radiate.</em>
+    </h1>
+    <p class="hero-sub">
+      Specialized lymphatic drainage and luxury body contouring treatments designed to help you feel lighter, healthier, and truly transformed — in the heart of Calgary.
+    </p>
+    <div class="hero-actions">
+      <a href="#book" class="btn-primary">Book a Session</a>
+      <a href="#services" class="btn-ghost">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-placeholder">
+      <div class="hero-decorative"></div>
+      <div class="hero-decorative"></div>
+      <div class="hero-decorative"></div>
+    </div>
+    <div class="hero-location">📍 Calgary, AB</div>
+    <div class="hero-brand-art">Ginny</div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider">
+  <span class="divider-text">Brazilian Lymphatic Drainage</span>
+  <div class="divider-line"></div>
+  <span class="divider-text">Wood Therapy</span>
+  <div class="divider-line"></div>
+  <span class="divider-text">Vacuum Therapy</span>
+  <div class="divider-line"></div>
+  <span class="divider-text">Cavitation</span>
+  <div class="divider-line"></div>
+  <span class="divider-text">RF · Laser Lipo</span>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-image-wrap reveal">
+    <div class="about-img-box">
+      <!-- Decorative art element instead of missing photo -->
+      <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="80" cy="80" r="60" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+        <circle cx="80" cy="80" r="40" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <circle cx="80" cy="80" r="20" fill="rgba(255,255,255,0.15)"/>
+        <path d="M80 20 L80 140 M20 80 L140 80" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+      </svg>
+    </div>
+
+    <!-- Actual Image -->
+     <img
+     src="image.jpg"
+     alt="Ginny, the founder of Lymph Sculpt"
+     class="about-img"
+     onload="this.previousElementSibling.style.display='none'; this.style.display='block';"
+     onerror="this.style.display='none';"
+    />
+    </div>
+    <div class="about-accent-box"></div>
+    <div class="about-badge">
+      <span class="num">5+</span>
+      <span class="label">Years of<br>Expertise</span>
+    </div>
+  </div>
+
+  <div class="about-content reveal">
+    <p class="section-tag">About Ginny</p>
+    <h2 class="section-title">Wellness Rooted in <em>Expertise</em> & Care</h2>
+    <p class="about-text">
+      Ginny is a certified specialist in lymphatic health and body contouring, bringing a deeply personal and results-driven approach to every session. Based in Calgary, her practice blends the science of lymphatic drainage with advanced body sculpting techniques.
+    </p>
+    <p class="about-text">
+      Whether you're recovering post-surgery, managing chronic inflammation, or seeking aesthetic refinement, Ginny tailors each treatment to your unique body and goals — with warmth, precision, and expertise.
+    </p>
+    <div class="about-pillars">
+      <div class="pillar"><div class="pillar-dot"></div><span class="pillar-text">Certified Practitioner</span></div>
+      <div class="pillar"><div class="pillar-dot"></div><span class="pillar-text">Post-Surgery Specialist</span></div>
+      <div class="pillar"><div class="pillar-dot"></div><span class="pillar-text">Personalized Care</span></div>
+      <div class="pillar"><div class="pillar-dot"></div><span class="pillar-text">Advanced Technology</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header reveal">
+    <p class="section-tag">What We Offer</p>
+    <h2 class="section-title">Our <em>Signature</em> Treatments</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <h3 class="service-name">Brazilian Lymphatic Drainage</h3>
+      <p class="service-sub">Lymphatic Wellness</p>
+      <p class="service-desc">A specialized technique using gentle, rhythmic strokes to stimulate the lymphatic system — reducing swelling, boosting immunity, and promoting deep detoxification. Ideal for post-surgical recovery and overall wellness.</p>
+      <p class="service-price">From $120</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">02</div>
+      <h3 class="service-name">Wood Therapy</h3>
+      <p class="service-sub">Luxury Body Contouring</p>
+      <p class="service-desc">An ancient technique using specially crafted wooden instruments to break down fat deposits, tone muscles, and contour the body. Deeply therapeutic and powerfully sculpting.</p>
+      <p class="service-price">From $95</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">03</div>
+      <h3 class="service-name">Vacuum Therapy</h3>
+      <p class="service-sub">Luxury Body Contouring</p>
+      <p class="service-desc">Suction-based therapy that lifts and tones skin, reduces cellulite, and enhances blood and lymphatic circulation — delivering visibly smoother and more defined results.</p>
+      <p class="service-price">From $100</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">04</div>
+      <h3 class="service-name">Cavitation</h3>
+      <p class="service-sub">Luxury Body Contouring</p>
+      <p class="service-desc">Non-invasive ultrasound waves target and break down stubborn fat cells — naturally eliminated by the body's lymphatic system. A safe alternative to surgical fat removal.</p>
+      <p class="service-price">From $110</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">05</div>
+      <h3 class="service-name">RF (Radio Frequency)</h3>
+      <p class="service-sub">Luxury Body Contouring</p>
+      <p class="service-desc">Deep radio frequency energy tightens skin, stimulates collagen production, and reduces the appearance of loose or sagging skin — revealing firmer, more youthful contours.</p>
+      <p class="service-price">From $105</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">06</div>
+      <h3 class="service-name">Laser Lipo</h3>
+      <p class="service-sub">Luxury Body Contouring</p>
+      <p class="service-desc">Low-level laser technology targets fat cells and shrinks them without heat or discomfort — a pain-free, non-invasive solution for inch loss and body refinement.</p>
+      <p class="service-price">From $115</p>
+    </div>
+  </div>
+</section>
+
+<!-- LUXURY BODY CONTOURING HIGHLIGHT -->
+<section id="luxury">
+  <div class="luxury-header">
+    <div class="reveal">
+      <p class="section-tag">Why Choose Us</p>
+      <h2 class="section-title">The Lymph Sculpt <em>Difference</em></h2>
+    </div>
+    <div class="reveal">
+      <p style="font-size:0.88rem;line-height:2;color:var(--muted);">Every treatment at Lymph Sculpt is designed around you — your body, your goals, and your comfort. Ginny combines advanced techniques with genuine care to deliver results that last.</p>
+    </div>
+  </div>
+  <div class="luxury-grid">
+    <div class="luxury-card reveal">
+      <span class="luxury-icon">🌿</span>
+      <div class="luxury-name">Holistic Approach</div>
+      <p class="luxury-desc">Mind-body wellness at every session</p>
+    </div>
+    <div class="luxury-card reveal">
+      <span class="luxury-icon">✦</span>
+      <div class="luxury-name">Certified Expert</div>
+      <p class="luxury-desc">Trained in advanced body sculpting</p>
+    </div>
+    <div class="luxury-card reveal">
+      <span class="luxury-icon">◎</span>
+      <div class="luxury-name">Tailored Treatments</div>
+      <p class="luxury-desc">Customized to your unique body</p>
+    </div>
+    <div class="luxury-card reveal">
+      <span class="luxury-icon">❋</span>
+      <div class="luxury-name">Calgary-Based</div>
+      <p class="luxury-desc">Your local wellness sanctuary</p>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section id="book">
+  <div class="book-left reveal">
+    <p class="section-tag">Appointments</p>
+    <h2 class="section-title">Ready to <em>Begin</em> Your Journey?</h2>
+    <p class="book-note">Take the first step toward a lighter, more sculpted you. Book your personalized session with Ginny and experience the Lymph Sculpt difference.</p>
+    <div class="book-highlights">
+      <div class="book-highlight">Complimentary consultation for new clients</div>
+      <div class="book-highlight">Flexible scheduling available</div>
+      <div class="book-highlight">Post-surgical recovery packages</div>
+      <div class="book-highlight">Bundle sessions for best results</div>
+    </div>
+  </div>
+
+  <div class="book-form reveal">
+    <h3 class="form-title">Book Appointment</h3>
+    <p class="form-sub">We'll confirm your session within 24 hours</p>
+    <div class="form-row">
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" placeholder="Jane">
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" placeholder="Smith">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" placeholder="jane@email.com">
+    </div>
+    <div class="form-group">
+      <label>Phone</label>
+      <input type="tel" placeholder="+1 (403) 000-0000">
+    </div>
+    <div class="form-group">
+      <label>Service</label>
+      <select>
+        <option value="">Select a service…</option>
+        <option>Brazilian Lymphatic Drainage</option>
+        <option>Wood Therapy</option>
+        <option>Vacuum Therapy</option>
+        <option>Cavitation</option>
+        <option>RF (Radio Frequency)</option>
+        <option>Laser Lipo</option>
+        <option>Combination Package</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Preferred Date</label>
+        <input type="date">
+      </div>
+      <div class="form-group">
+        <label>Preferred Time</label>
+        <input type="time">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Notes (optional)</label>
+      <textarea placeholder="Any health considerations or questions for Ginny…"></textarea>
+    </div>
+    <button class="btn-submit">Request Appointment</button>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-block reveal">
+    <p class="contact-label">Location</p>
+    <p class="contact-value">Calgary, Alberta<br>Canada</p>
+    <p class="contact-hours" style="margin-top:0.6rem;font-size:0.75rem;color:var(--warm-tan);">Exact address provided upon booking</p>
+  </div>
+  <div class="contact-block reveal">
+    <p class="contact-label">Hours</p>
+    <div class="contact-hours">
+      Mon – Fri &nbsp;&nbsp; 9:00 AM – 7:00 PM<br>
+      Saturday &nbsp;&nbsp;&nbsp; 10:00 AM – 5:00 PM<br>
+      Sunday &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; By Appointment
+    </div>
+  </div>
+  <div class="contact-block reveal">
+    <p class="contact-label">Get in Touch</p>
+    <p class="contact-value" style="font-size:0.9rem;">info@lymphsculptbyginny.ca</p>
+    <p class="contact-value" style="font-size:0.9rem;margin-top:0.4rem;">+1 (403) 000-0000</p>
+    <p class="contact-label" style="margin-top:1.2rem;">Follow Along</p>
+    <p class="contact-value" style="font-size:0.85rem;">@lymphsculptbyginny</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Lymph Sculpt by Ginny</div>
+  <p class="footer-text">© 2025 Lymph Sculpt by Ginny · Calgary, AB · All rights reserved</p>
+</footer>
+
+<script>
+  // Hamburger menu toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.querySelector('.nav-links');
+  
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+
+  // Close menu when a link is clicked
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = `${(i % 4) * 0.1}s`;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Shrink nav on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.innerWidth > 900) {
+      nav.style.padding = window.scrollY > 50 ? '1rem 4rem' : '1.4rem 4rem';
+    } else {
+      nav.style.padding = window.scrollY > 50 ? '0.7rem 2rem' : '1rem 2rem';
+    }
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('nav')) {
+      navLinks.classList.remove('active');
+    }
+  });
+</script>
+</body>
+</html>
